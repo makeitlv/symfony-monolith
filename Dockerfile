@@ -37,9 +37,16 @@ RUN set -eux; \
     	zip \
     	apcu \
 		opcache \
+    	amqp \
     ;
 
 ###> recipes ###
+###> doctrine/doctrine-bundle ###
+RUN apk add --no-cache --virtual .pgsql-deps postgresql-dev; \
+	docker-php-ext-install -j$(nproc) pdo_pgsql; \
+	apk add --no-cache --virtual .pgsql-rundeps so:libpq.so.5; \
+	apk del .pgsql-deps
+###< doctrine/doctrine-bundle ###
 ###< recipes ###
 
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
@@ -87,6 +94,12 @@ RUN set -eux; \
 		chmod +x bin/console; sync; \
     fi
 
+# Worker
+FROM app_php AS app_messenger
+WORKDIR /srv/app
+
+ENTRYPOINT ["docker-entrypoint"]
+
 # Dev image
 FROM app_php AS app_php_dev
 
@@ -104,6 +117,22 @@ RUN set -eux; \
 
 RUN rm -f .env.local.php
 
+# Node image
+FROM node:19-alpine AS app_node
+
+WORKDIR /srv/app
+
+COPY --from=app_php /srv/app/vendor ./vendor
+RUN ls -la
+COPY package.json yarn.lock ./
+
+RUN yarn install
+
+COPY assets assets/
+COPY webpack.config.js ./
+
+RUN yarn run build
+
 # Build Caddy with the Mercure and Vulcain modules
 FROM caddy:2.6-builder-alpine AS app_caddy_builder
 
@@ -120,4 +149,5 @@ WORKDIR /srv/app
 
 COPY --from=app_caddy_builder --link /usr/bin/caddy /usr/bin/caddy
 COPY --from=app_php --link /srv/app/public public/
+COPY --from=app_node --link /srv/app/public/build public/build/
 COPY --link docker/caddy/Caddyfile /etc/caddy/Caddyfile

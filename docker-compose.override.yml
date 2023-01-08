@@ -23,5 +23,36 @@ services:
       - ./public:/srv/app/public:ro
       - ./docker/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
 
+  node:
+    build:
+      context: .
+      target: app_node
+    command: 'sh -c "yarn install; yarn run dev-server --https --host 0.0.0.0 --public localhost:8080"'
+    environment:
+      NODE_END: "${NODE_ENV:-development}"
+    volumes:
+      - ./:/srv/app
+    ports:
+      - "127.0.0.1:8080:8080"
+
+  rabbitmq:
+    ports:
+      - '127.0.0.1:5672:5672' # dsn server
+      - '127.0.0.1:15672:15672' # web ui  
+
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
+
+###> doctrine/doctrine-bundle ###
+  database:
+    ports:
+      - "127.0.0.1:5432:5432" # dsn server
+###< doctrine/doctrine-bundle ###
+
+###> symfony/mailer ###
+  mailer:
+    image: schickling/mailcatcher
+    ports:
+      - '127.0.0.1:1025:1025' # dsn server
+      - '127.0.0.1:1080:1080' # web ui
+###< symfony/mailer ###
