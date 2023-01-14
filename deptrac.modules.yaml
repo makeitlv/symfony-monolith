@@ -1,0 +1,47 @@
+parameters:
+    paths:
+        - ./src
+    layers:
+        -
+            name: Common
+            collectors:
+                -
+                    type: directory
+                    regex: /src/Common/.*
+
+        -
+            name: Notification
+            collectors:
+                -   type: directory
+                    regex: /src/Notification/.*
+
+        -
+            name: Client
+            collectors:
+                -   type: directory
+                    regex: /src/Client/.*
+
+        -
+            name: Admin
+            collectors:
+                -
+                    type: directory
+                    regex: /src/Admin/.*
+                    
+        -   
+            name: User
+            collectors:
+                -   type: directory
+                    regex: /src/User/.*
+
+    ruleset:
+        Common:
+        Notification:
+        Client:
+            - Common
+        User:
+            - Common
+            - Client
+        Admin:
+            - Common
+            - Client

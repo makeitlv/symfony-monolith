@@ -1,4 +1,7 @@
 .idea
+bin/*.phar
+.deptrac.cache
+.phpcs-cache
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php

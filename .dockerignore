@@ -29,3 +29,8 @@ vendor/
 .env.local.php
 .env.test
 run
+.idea
+bin/*.phar
+.deptrac.cache
+.phpcs-cache
+.phpunit.result.cache
