@@ -43,7 +43,7 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
 	fi
 
 	if [ ! -f bin/psalm.phar ]; then
-		wget -O bin/psalm.phar https://github.com/vimeo/psalm/releases/download/5.4.0/psalm.phar
+		wget -O bin/psalm.phar https://github.com/vimeo/psalm/releases/download/5.6.0/psalm.phar
 
 		chmod +x bin/psalm.phar
 	fi
