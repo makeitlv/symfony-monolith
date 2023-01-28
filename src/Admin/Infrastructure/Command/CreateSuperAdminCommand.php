@@ -56,11 +56,12 @@ class CreateSuperAdminCommand extends Command
                 )
             );
         } catch (HandlerFailedException $exception) {
+            /** @var Throwable $previousException */
             $previousException = $exception->getPrevious();
 
             if ($previousException instanceof ValidationFailedException) {
                 foreach ($previousException->getViolations() as $violation) {
-                    $io->error(sprintf('%s: %s', $violation->getPropertyPath(), $violation->getMessage()));
+                    $io->error(sprintf('%s: %s', $violation->getPropertyPath(), (string) $violation->getMessage()));
                 }
             }
 
