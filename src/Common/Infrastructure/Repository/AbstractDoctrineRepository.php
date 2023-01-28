@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Common\Infrastructure\Repository\Doctrine;
+namespace App\Common\Infrastructure\Repository;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;
 use InvalidArgumentException;
 use stdClass;
 
-class AbstractRepository
+class AbstractDoctrineRepository
 {
     /** @var class-string */
     protected const CLASS_NAME = stdClass::class;

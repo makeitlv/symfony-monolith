@@ -15,9 +15,7 @@ framework:
                 middleware:
                     - validation
                     - doctrine_transaction
-            query.bus:
-                middleware:
-                    - validation
+            query.bus: ~
             event.bus:
                 default_middleware:
                     enabled: true

@@ -15,16 +15,20 @@ services:
         App\Common\Domain\Bus\Command\CommandHandlerInterface:
             tags:
                 - { name: messenger.message_handler, bus: command.bus }
-        
+
         App\Common\Domain\Bus\Query\QueryHandlerInterface:
             tags:
                 - { name: messenger.message_handler, bus: query.bus }
-        
+
         App\Common\Domain\Bus\Event\EventHandlerInterface:
             tags:
                 - { name: messenger.message_handler, bus: event.bus }
-        
+
         App\Common\Infrastructure\EventSubscriber\DomainEventSubscriber:
+            tags:
+                - { name: doctrine.event_subscriber }
+
+        App\Common\Infrastructure\EventSubscriber\DomainValidationSubscriber:
             tags:
                 - { name: doctrine.event_subscriber }
 
@@ -37,7 +41,7 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
-                
+
     App\Common\Infrastructure\Bus\CommandBus:
         arguments:
             $commandBus: '@command.bus'

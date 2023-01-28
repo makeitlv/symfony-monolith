@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                  http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Admin\Domain\Entity\Admin"
+            table="admin">
+
+        <embedded name="uuid" class="App\Common\Domain\Entity\ValueObject\Uuid" use-column-prefix="false"/>
+        <embedded name="email" class="App\Client\Domain\Entity\ValueObject\Email" use-column-prefix="false"/>
+        <embedded name="name" class="App\Client\Domain\Entity\ValueObject\Name" use-column-prefix="false"/>
+        <embedded name="password" class="App\Client\Domain\Entity\ValueObject\Password" use-column-prefix="false"/>
+        <embedded name="confirmationToken" class="App\Client\Domain\Entity\ValueObject\ConfirmationToken" use-column-prefix="false"/>
+
+        <field name="role" type="string" length="32" enum-type="App\Admin\Domain\Entity\ValueObject\Role"/>
+        <field name="status" type="string" length="32" enum-type="App\Client\Domain\Entity\ValueObject\Status"/>
+
+        <field name="createdAt" type="datetime_immutable">
+            <options>
+                <option name="default">NOW()</option>
+            </options>
+        </field>
+        <field name="updatedAt" type="datetime_immutable" nullable="true"/>
+    </entity>
+</doctrine-mapping>

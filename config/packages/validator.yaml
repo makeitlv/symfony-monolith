@@ -7,6 +7,21 @@ framework:
         #auto_mapping:
         #    App\Entity\: []
 
+        mapping:
+            paths:
+                # Common
+                - '%kernel.project_dir%/src/Common/Infrastructure/Mapping/Validation/Uuid.validation.xml'
+
+                # Client
+                - '%kernel.project_dir%/src/Client/Infrastructure/Mapping/Validation/ConfirmationToken.validation.xml'
+                - '%kernel.project_dir%/src/Client/Infrastructure/Mapping/Validation/Email.validation.xml'
+                - '%kernel.project_dir%/src/Client/Infrastructure/Mapping/Validation/Name.validation.xml'
+                - '%kernel.project_dir%/src/Client/Infrastructure/Mapping/Validation/Password.validation.xml'
+                - '%kernel.project_dir%/src/Client/Infrastructure/Mapping/Validation/PlainPassword.validation.xml'
+
+                # Admin
+                - '%kernel.project_dir%/src/Admin/Infrastructure/Mapping/Validation/Admin.validation.xml'
+
 when@test:
     framework:
         validation:

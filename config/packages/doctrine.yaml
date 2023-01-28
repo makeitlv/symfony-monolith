@@ -16,6 +16,27 @@ doctrine:
                 prefix: 'App\Entity'
                 alias: App
 
+            Common:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Common/Infrastructure/Mapping/Doctrine'
+                prefix: 'App\Common\Domain\Entity'
+                alias: Common
+
+            Client:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Client/Infrastructure/Mapping/Doctrine'
+                prefix: 'App\Client\Domain\Entity'
+                alias: Client
+
+            Admin:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Admin/Infrastructure/Mapping/Doctrine'
+                prefix: 'App\Admin\Domain\Entity'
+                alias: Admin
+
 when@test:
     doctrine:
         dbal:
