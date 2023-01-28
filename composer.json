@@ -8,8 +8,10 @@
     "require": {
         "php": ">=8.2.1",
         "ext-amqp": "*",
+        "ext-apcu": "*",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-random": "*",
         "doctrine/doctrine-bundle": "^2.8",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.14",
