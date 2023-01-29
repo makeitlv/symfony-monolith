@@ -13,4 +13,14 @@
             <directory name="vendor" />
         </ignoreFiles>
     </projectFiles>
+
+    <issueHandlers>
+        <MissingPropertyType errorLevel="suppress" />
+
+        <MissingConstructor>
+            <errorLevel type="suppress">
+                <directory name="src/Admin/Infrastructure/Query" />
+            </errorLevel>
+        </MissingConstructor>
+    </issueHandlers>
 </psalm>

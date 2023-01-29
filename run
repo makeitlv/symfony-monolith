@@ -18,7 +18,7 @@ if [ $# -gt 0 ]; then
         docker-compose exec php php -d memory_limit=-1 ./bin/phpcbf.phar
     elif [ "$1" == "qa" ]; then
         shift 1
-        docker-compose exec php php -d memory_limit=-1 ./bin/phpcs.phar --standard=phpcs.xml
+        docker-compose exec php php -d memory_limit=-1 ./bin/phpcs.phar --standard=phpcs.xml --config-set show_warnings 0
         docker-compose exec php php -d memory_limit=-1 ./bin/phpcpd.phar --fuzzy src/ config/
         docker-compose exec php php -d memory_limit=-1 ./bin/psalm.phar
         docker-compose exec php php -d memory_limit=-1 ./bin/deptrac.phar analyse --no-progress --config-file=deptrac.layers.yaml

@@ -9,17 +9,17 @@ use RuntimeException;
 
 abstract class AbstractCrudController extends \EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController
 {
-    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    public function persistEntity(EntityManagerInterface $entityManager, mixed $entityInstance): void
     {
         throw new RuntimeException('Use command instead!');
     }
 
-    public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    public function updateEntity(EntityManagerInterface $entityManager, mixed $entityInstance): void
     {
         throw new RuntimeException('Use command instead!');
     }
 
-    public function deleteEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    public function deleteEntity(EntityManagerInterface $entityManager, mixed $entityInstance): void
     {
         throw new RuntimeException('Use command instead!');
     }
