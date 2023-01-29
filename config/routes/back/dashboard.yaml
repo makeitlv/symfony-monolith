@@ -1,0 +1,3 @@
+dashboard:
+    resource: ../../../src/Dashboard/Infrastructure/Controller/
+    type: attribute
