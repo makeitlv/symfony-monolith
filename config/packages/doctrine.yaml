@@ -35,6 +35,8 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Admin/Infrastructure/Query'
                 prefix: 'App\Admin\Infrastructure\Query'
                 alias: AdminQuery
+        schema_ignore_classes:
+            - App\Admin\Infrastructure\Query\Admin
                 
 
 when@test:

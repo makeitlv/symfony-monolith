@@ -27,7 +27,7 @@ parameters:
             name: Vendor
             collectors:
                 -   type: className
-                    regex: ^(Symfony\\Component|Psr\\Log|Doctrine)\\.*
+                    regex: ^(Symfony\\Component|Psr\\Log|Doctrine|EasyCorp\\Bundle\\EasyAdminBundle)\\.*
     
     ruleset:
         Domain:
