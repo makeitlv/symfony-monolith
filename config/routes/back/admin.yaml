@@ -1,0 +1,3 @@
+admin:
+    resource: ../../../src/Admin/Infrastructure/Controller/Back/
+    type: attribute

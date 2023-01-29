@@ -36,6 +36,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Admin/Infrastructure/Mapping/Doctrine'
                 prefix: 'App\Admin\Domain\Entity'
                 alias: Admin
+            AdminQuery:
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Admin/Infrastructure/Query'
+                prefix: 'App\Admin\Infrastructure\Query'
+                alias: AdminQuery
+                
 
 when@test:
     doctrine:
