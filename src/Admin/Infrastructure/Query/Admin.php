@@ -49,4 +49,9 @@ class Admin
 
     #[ORM\Column]
     public DateTimeImmutable $updatedAt;
+
+    public function __toString(): string
+    {
+        return $this->email;
+    }
 }

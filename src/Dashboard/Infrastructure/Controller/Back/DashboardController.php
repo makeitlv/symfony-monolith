@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Dashboard\Infrastructure\Controller\Back;
 
 use App\Admin\Infrastructure\Query\Admin;
+use App\Dashboard\Settings\DashboardSettings;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -25,7 +26,8 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Admin Panel');
+            ->setTitle(DashboardSettings::ADMIN_TITLE)
+            ->setTranslationDomain(DashboardSettings::ADMIN_TRANSLATION_DOMAIN);
     }
 
     public function configureMenuItems(): iterable
@@ -41,7 +43,8 @@ class DashboardController extends AbstractDashboardController
             ->setDefaultSort([
                 'createdAt' => 'DESC'
             ])
-            ->showEntityActionsInlined();
+            ->showEntityActionsInlined()
+            ->setSearchFields(null);
     }
 
     public function configureActions(): Actions

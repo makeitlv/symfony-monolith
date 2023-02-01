@@ -4,14 +4,24 @@ declare(strict_types=1);
 
 namespace App\Admin\Infrastructure\Controller\Back;
 
+use App\Admin\Application\UseCase\Command\Create\CreateAdminCommand;
 use App\Admin\Infrastructure\Query\Admin;
-use App\Common\Infrastructure\Controller\Back\AbstractCrudController;
+use App\Common\Domain\Bus\Command\CommandBusInterface;
+use App\Dashboard\Infrastructure\Controller\Back\AbstractCrudController;
+use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
+use RuntimeException;
+use Symfony\Component\Uid\Uuid;
 
 class AdminCrudController extends AbstractCrudController
 {
+    public function __construct(
+        private CommandBusInterface $bus
+    ) {
+    }
+
     public static function getEntityFqcn(): string
     {
         return Admin::class;
@@ -44,6 +54,21 @@ class AdminCrudController extends AbstractCrudController
             })
             ->setPageTitle(Crud::PAGE_EDIT, static function (Admin $admin) {
                 return sprintf('Edit %s', $admin->email);
-            });
+            })
+            ->setSearchFields(['email', 'firstname', 'lastname']);
+    }
+
+    public function persistEntity(EntityManagerInterface $entityManager, mixed $entityInstance): void
+    {
+        if (!$entityInstance instanceof Admin) {
+            throw new RuntimeException('Wrong admin!');
+        }
+
+        $this->bus->dispatch(new CreateAdminCommand(
+            Uuid::v4()->__toString(),
+            $entityInstance->email,
+            $entityInstance->firstname,
+            $entityInstance->lastname
+        ));
     }
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Common\Infrastructure\Controller\Back;
+namespace App\Dashboard\Infrastructure\Controller\Back;
 
 use Doctrine\ORM\EntityManagerInterface;
 use RuntimeException;
