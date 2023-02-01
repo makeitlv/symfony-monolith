@@ -63,7 +63,7 @@ class AdminCrudController extends AbstractCrudController
             ->setSearchFields(['email', 'firstname', 'lastname']);
     }
 
-    public function persistEntity(EntityManagerInterface $entityManager, mixed $entityInstance): void
+    public function persist(EntityManagerInterface $entityManager, mixed $entityInstance): void
     {
         if (!$entityInstance instanceof Admin) {
             throw new RuntimeException('Wrong admin!');
@@ -77,7 +77,7 @@ class AdminCrudController extends AbstractCrudController
         ));
     }
 
-    public function updateEntity(EntityManagerInterface $entityManager, mixed $entityInstance): void
+    public function update(EntityManagerInterface $entityManager, mixed $entityInstance): void
     {
         if (!$entityInstance instanceof Admin) {
             throw new RuntimeException('Wrong admin!');
@@ -91,7 +91,7 @@ class AdminCrudController extends AbstractCrudController
         ));
     }
 
-    public function deleteEntity(EntityManagerInterface $entityManager, mixed $entityInstance): void
+    public function remove(EntityManagerInterface $entityManager, mixed $entityInstance): void
     {
         if (!$entityInstance instanceof Admin) {
             throw new RuntimeException('Wrong admin!');
