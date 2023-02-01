@@ -36,6 +36,7 @@ parameters:
 
     ruleset:
         Common:
+        Dashboard:
         Notification:
         Client:
             - Common
@@ -44,4 +45,5 @@ parameters:
             - Client
         Admin:
             - Common
+            - Dashboard
             - Client

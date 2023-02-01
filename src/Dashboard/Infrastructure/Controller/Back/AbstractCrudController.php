@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Dashboard\Infrastructure\Controller\Back;
 
-use App\Dashboard\Settings\DashboardSettings;
+use App\Dashboard\Infrastructure\Settings\DashboardSettings;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Translation\TranslatableMessage;
 use DomainException;
 use RuntimeException;
+use Symfony\Component\Translation\TranslatableMessage;
 use Throwable;
 
 abstract class AbstractCrudController extends \EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController

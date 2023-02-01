@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Dashboard\Settings;
+namespace App\Dashboard\Infrastructure\Settings;
 
 class DashboardSettings
 {

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Dashboard\Infrastructure\Controller\Back;
 
 use App\Admin\Infrastructure\Query\Admin;
-use App\Dashboard\Settings\DashboardSettings;
+use App\Dashboard\Infrastructure\Settings\DashboardSettings;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
