@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Admin\Application\UseCase\Command\Create;
+namespace App\Admin\Application\UseCase\Command\Update;
 
 use App\Client\Domain\Entity\ValueObject\Email;
 use App\Client\Domain\Entity\ValueObject\Name;
 use App\Common\Domain\Bus\Command\CommandInterface;
 use App\Common\Domain\Entity\ValueObject\Uuid;
 
-readonly class CreateAdminCommand implements CommandInterface
+readonly class UpdateAdminCommand implements CommandInterface
 {
     public Uuid $uuid;
     public Email $email;

@@ -8,7 +8,6 @@ use App\Admin\Domain\Entity\Admin;
 use App\Admin\Domain\Entity\ValueObject\Role;
 use App\Admin\Domain\Repository\AdminRepositoryInterface;
 use App\Client\Application\Service\ConfirmationTokenGeneratorInterface;
-use App\Client\Application\Service\PasswordEncoderInterface;
 use App\Client\Application\Service\PasswordGeneratorInterface;
 use App\Client\Domain\Entity\ValueObject\Status;
 use App\Common\Domain\Bus\Command\CommandHandlerInterface;
@@ -42,6 +41,5 @@ class CreateAdminHandler implements CommandHandlerInterface
         );
 
         $this->adminRepository->persist($admin);
-        dump('fbxc');
     }
 }

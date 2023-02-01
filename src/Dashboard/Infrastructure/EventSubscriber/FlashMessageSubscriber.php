@@ -10,13 +10,29 @@ use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityPersistedEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityUpdatedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
+use Symfony\Component\HttpFoundation\Session\FlashBagAwareSessionInterface;
 use Symfony\Component\Translation\TranslatableMessage;
+use RuntimeException;
 
 class FlashMessageSubscriber implements EventSubscriberInterface
 {
+    private FlashBagInterface $flashBag;
+
     public function __construct(
-        private RequestStack $requestStack
+        RequestStack $requestStack
     ) {
+        $session = $requestStack->getSession();
+        if (!$session instanceof FlashBagAwareSessionInterface) {
+            throw new RuntimeException('Wrong session!');
+        }
+
+        $flashBag = $session->getFlashBag();
+        if (!$flashBag instanceof FlashBagInterface) {
+            throw new RuntimeException('Wrong flash bag!');
+        }
+
+        $this->flashBag = $flashBag;
     }
 
     public static function getSubscribedEvents(): array
@@ -30,7 +46,7 @@ class FlashMessageSubscriber implements EventSubscriberInterface
 
     public function flashMessageAfterPersist(AfterEntityPersistedEvent $event): void
     {
-        $this->requestStack->getSession()->getFlashBag()->add(
+        $this->flashBag->add(
             'success',
             new TranslatableMessage(
                 'Content "%name%" has been created!',
@@ -44,7 +60,7 @@ class FlashMessageSubscriber implements EventSubscriberInterface
 
     public function flashMessageAfterUpdate(AfterEntityUpdatedEvent $event): void
     {
-        $this->requestStack->getSession()->getFlashBag()->add(
+        $this->flashBag->add(
             'success',
             new TranslatableMessage(
                 'Content "%name%" has been updated!',
@@ -58,7 +74,7 @@ class FlashMessageSubscriber implements EventSubscriberInterface
 
     public function flashMessageAfterDelete(AfterEntityDeletedEvent $event): void
     {
-        $this->requestStack->getSession()->getFlashBag()->add(
+        $this->flashBag->add(
             'success',
             new TranslatableMessage(
                 'Content "%name%" has been deleted!',

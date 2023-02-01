@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Admin\Infrastructure\Controller\Back;
 
 use App\Admin\Application\UseCase\Command\Create\CreateAdminCommand;
+use App\Admin\Application\UseCase\Command\Delete\DeleteAdminCommand;
+use App\Admin\Application\UseCase\Command\Update\UpdateAdminCommand;
 use App\Admin\Infrastructure\Query\Admin;
 use App\Common\Domain\Bus\Command\CommandBusInterface;
 use App\Dashboard\Infrastructure\Controller\Back\AbstractCrudController;
@@ -15,6 +17,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use RuntimeException;
 use Symfony\Component\Uid\Uuid;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class AdminCrudController extends AbstractCrudController
 {
     public function __construct(
@@ -69,6 +74,31 @@ class AdminCrudController extends AbstractCrudController
             $entityInstance->email,
             $entityInstance->firstname,
             $entityInstance->lastname
+        ));
+    }
+
+    public function updateEntity(EntityManagerInterface $entityManager, mixed $entityInstance): void
+    {
+        if (!$entityInstance instanceof Admin) {
+            throw new RuntimeException('Wrong admin!');
+        }
+
+        $this->bus->dispatch(new UpdateAdminCommand(
+            $entityInstance->uuid,
+            $entityInstance->email,
+            $entityInstance->firstname,
+            $entityInstance->lastname
+        ));
+    }
+
+    public function deleteEntity(EntityManagerInterface $entityManager, mixed $entityInstance): void
+    {
+        if (!$entityInstance instanceof Admin) {
+            throw new RuntimeException('Wrong admin!');
+        }
+
+        $this->bus->dispatch(new DeleteAdminCommand(
+            $entityInstance->uuid
         ));
     }
 }
