@@ -60,6 +60,9 @@ class DashboardController extends AbstractDashboardController
             ->update(Crud::PAGE_DETAIL, Action::EDIT, static function (Action $action) {
                 return $action->setIcon('fa fa-edit');
             })
+            ->update(Crud::PAGE_DETAIL, Action::DELETE, static function (Action $action) {
+                return $action->setCssClass('btn btn-danger');
+            })
             ->update(Crud::PAGE_DETAIL, Action::INDEX, static function (Action $action) {
                 return $action->setIcon('fa fa-list');
             })
