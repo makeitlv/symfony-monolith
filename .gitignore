@@ -3,6 +3,7 @@ bin/CodeSniffer.conf
 bin/*.phar
 .deptrac.cache
 .phpcs-cache
+/public/phpmetrics/
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
@@ -23,6 +24,7 @@ yarn-error.log
 ###> symfony/phpunit-bridge ###
 .phpunit.result.cache
 /phpunit.xml
+/junit.xml
 ###< symfony/phpunit-bridge ###
 
 ###> phpunit/phpunit ###

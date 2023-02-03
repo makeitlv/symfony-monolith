@@ -21,6 +21,8 @@ bin/CodeSniffer.conf
 .github/
 docs/
 public/bundles/
+public/phpmetrics/
+phpmetrics.json
 tests/
 var/
 vendor/
@@ -35,3 +37,4 @@ bin/*.phar
 .deptrac.cache
 .phpcs-cache
 .phpunit.result.cache
+junit.xml

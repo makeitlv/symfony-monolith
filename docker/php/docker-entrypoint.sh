@@ -54,6 +54,12 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
 		chmod +x bin/deptrac.phar
 	fi
 
+	if [ ! -f bin/phpmetrics.phar ]; then
+		wget -O bin/phpmetrics.phar https://github.com/phpmetrics/PhpMetrics/releases/download/v2.8.1/phpmetrics.phar
+
+		chmod +x bin/phpmetrics.phar
+	fi
+
 	if [ "$APP_ENV" != 'prod' ]; then
 		composer install --prefer-dist --no-progress --no-interaction
 	fi
