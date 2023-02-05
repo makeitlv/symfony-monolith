@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "30de4db19f1438856ff862d0a1703fce",
+    "content-hash": "6ed7e79695336f3b1fb233271c945db2",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -7317,6 +7317,82 @@
             "time": "2022-02-21T01:04:05+00:00"
         },
         {
+            "name": "phpmetrics/phpmetrics",
+            "version": "dev-3.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpmetrics/PhpMetrics.git",
+                "reference": "aa911ff199165a4c94b6813ac7b6468ea3b64ab1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpmetrics/PhpMetrics/zipball/aa911ff199165a4c94b6813ac7b6468ea3b64ab1",
+                "reference": "aa911ff199165a4c94b6813ac7b6468ea3b64ab1",
+                "shasum": ""
+            },
+            "require": {
+                "ext-tokenizer": "*",
+                "nikic/php-parser": "^4",
+                "php": ">=8.1"
+            },
+            "replace": {
+                "halleck45/php-metrics": "*",
+                "halleck45/phpmetrics": "*"
+            },
+            "require-dev": {
+                "phake/phake": "^4.3.0",
+                "phpstan/extension-installer": "^1.2",
+                "phpstan/phpstan": "^1.9",
+                "phpstan/phpstan-deprecation-rules": "^1.1",
+                "phpstan/phpstan-phpunit": "^1.3",
+                "phpstan/phpstan-strict-rules": "^1.4",
+                "phpunit/phpunit": "^9.5",
+                "roave/security-advisories": "dev-latest",
+                "sebastian/comparator": ">=4.0.8",
+                "squizlabs/php_codesniffer": "^3.7",
+                "symfony/dom-crawler": "^6.2",
+                "vimeo/psalm": "^5.6"
+            },
+            "suggest": {
+                "ext-dom": "To allow XML parsing and report results.",
+                "ext-yaml": "To allow yaml parsing of configuration files."
+            },
+            "bin": [
+                "bin/phpmetrics"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Hal\\": "src/Hal"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jean-François Lépine",
+                    "email": "lepinejeanfrancois@yahoo.fr",
+                    "homepage": "http://www.lepine.pro",
+                    "role": "Copyright Holder"
+                }
+            ],
+            "description": "Static analyzer tool for PHP : Coupling, Cyclomatic complexity, Maintainability Index, Halstead's metrics... and more !",
+            "homepage": "http://www.phpmetrics.org",
+            "keywords": [
+                "analysis",
+                "qa",
+                "quality",
+                "testing"
+            ],
+            "support": {
+                "issues": "https://github.com/PhpMetrics/PhpMetrics/issues",
+                "source": "https://github.com/phpmetrics/PhpMetrics/tree/3.x-dev"
+            },
+            "time": "2023-02-02T18:08:23+00:00"
+        },
+        {
             "name": "phpunit/php-code-coverage",
             "version": "9.2.23",
             "source": {
@@ -9840,6 +9916,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "phpmetrics/phpmetrics": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": true,

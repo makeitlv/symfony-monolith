@@ -18,7 +18,7 @@ if [ $# -gt 0 ]; then
         docker-compose exec php php -d memory_limit=-1 ./bin/phpcbf.phar
     elif [ "$1" == "phpmetrics" ]; then
         shift 1
-        docker-compose exec php php -d memory_limit=-1 ./bin/phpmetrics.phar --config=phpmetrics.json --junit=junit.xml
+        docker-compose exec php php -d memory_limit=-1 ./vendor/bin/phpmetrics "$@" --config=phpmetrics.json --junit=junit.xml --quiet
     elif [ "$1" == "qa" ]; then
         shift 1
         docker-compose exec php php -d memory_limit=-1 ./bin/phpcs.phar --standard=phpcs.xml

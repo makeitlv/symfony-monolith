@@ -88,6 +88,7 @@
     },
     "require-dev": {
         "dama/doctrine-test-bundle": "^7.1",
+        "phpmetrics/phpmetrics": "dev-3.x-dev",
         "phpunit/phpunit": "^9.5",
         "roave/security-advisories": "dev-latest",
         "symfony/browser-kit": "6.2.*",
