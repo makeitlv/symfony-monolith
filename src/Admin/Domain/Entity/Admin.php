@@ -35,13 +35,8 @@ class Admin extends Aggregate
 
     public function update(Email $email, Name $name): void
     {
-        if (!$this->email->equals($email)) {
-            $this->email = $email;
-        }
-
-        if (!$this->name->equals($name)) {
-            $this->name = $name;
-        }
+        $this->email = $email;
+        $this->name = $name;
 
         $this->updatedAt = new DateTimeImmutable();
     }

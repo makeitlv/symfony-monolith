@@ -1,0 +1,18 @@
+services:
+    App\Common\Domain\Bus\Command\CommandBusInterface:
+        public: true
+        class: 'App\Common\Infrastructure\Bus\CommandBus'
+        arguments:
+            $commandBus: '@command.bus'
+
+    App\Common\Domain\Bus\Query\QueryBusInterface:
+        public: true
+        class: 'App\Common\Infrastructure\Bus\QueryBus'
+        arguments:
+            $messageBus: '@query.bus'
+
+    App\Common\Domain\Bus\Event\EventBusInterface:
+        public: true
+        class: 'App\Common\Infrastructure\Bus\EventBus'
+        arguments:
+            $eventBus: '@event.bus'
