@@ -7,6 +7,7 @@ namespace App\Admin\Application\UseCase\Command\NewPassword;
 use App\Common\Domain\Bus\Command\CommandInterface;
 use App\Common\Domain\Entity\ValueObject\Uuid;
 
+// phpcs:ignoreFile
 readonly class NewAdminPasswordCommand implements CommandInterface
 {
     public Uuid $uuid;

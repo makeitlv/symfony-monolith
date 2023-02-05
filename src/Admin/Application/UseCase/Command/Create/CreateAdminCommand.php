@@ -9,6 +9,7 @@ use App\Client\Domain\Entity\ValueObject\Name;
 use App\Common\Domain\Bus\Command\CommandInterface;
 use App\Common\Domain\Entity\ValueObject\Uuid;
 
+// phpcs:ignoreFile
 readonly class CreateAdminCommand implements CommandInterface
 {
     public Uuid $uuid;

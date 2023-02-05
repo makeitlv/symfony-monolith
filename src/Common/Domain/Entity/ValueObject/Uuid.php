@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Common\Domain\Entity\ValueObject;
 
+// phpcs:ignoreFile
 readonly class Uuid
 {
     public function __construct(

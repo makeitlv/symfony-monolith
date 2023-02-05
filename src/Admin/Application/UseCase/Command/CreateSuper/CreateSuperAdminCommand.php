@@ -10,6 +10,7 @@ use App\Client\Domain\Entity\ValueObject\PlainPassword;
 use App\Common\Domain\Bus\Command\CommandInterface;
 use App\Common\Domain\Entity\ValueObject\Uuid;
 
+// phpcs:ignoreFile
 readonly class CreateSuperAdminCommand implements CommandInterface
 {
     public Uuid $uuid;

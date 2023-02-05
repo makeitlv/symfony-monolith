@@ -37,7 +37,7 @@ codestyle:
     stage: test
     script:
         - php -d memory_limit=-1 ./bin/console cache:warmup --env=dev
-        - php -d memory_limit=-1 phpcs.phar --standard=phpcs.xml --config-set show_warnings 0
+        - php -d memory_limit=-1 phpcs.phar --standard=phpcs.xml
         - php -d memory_limit=-1 phpcpd.phar --fuzzy src/ config/
         - php -d memory_limit=-1 psalm.phar --no-progress=true --output-format=text -m
         - php -d memory_limit=-1 deptrac.phar analyse --no-progress --report-uncovered --fail-on-uncovered --config-file=deptrac.layers.yaml

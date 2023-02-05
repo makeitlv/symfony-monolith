@@ -82,7 +82,7 @@ class AdminCrudController extends AbstractCrudController
     public function configureActions(Actions $actions): Actions
     {
         $activateAction = Action::new('activate')
-            ->linkToUrl(function() {
+            ->linkToUrl(function () {
                 $request = $this->requestStack->getCurrentRequest();
 
                 if (!$request instanceof Request) {
@@ -95,12 +95,12 @@ class AdminCrudController extends AbstractCrudController
             })
             ->addCssClass('btn')
             ->setIcon('fa fa-lock-open')
-            ->displayIf(static function(Admin $admin): bool {
+            ->displayIf(static function (Admin $admin): bool {
                 return $admin->status !== 'activated';
             });
 
         $blockAction = Action::new('block')
-            ->linkToUrl(function() {
+            ->linkToUrl(function () {
                 $request = $this->requestStack->getCurrentRequest();
 
                 if (!$request instanceof Request) {
@@ -113,12 +113,12 @@ class AdminCrudController extends AbstractCrudController
             })
             ->addCssClass('btn')
             ->setIcon('fa fa-lock')
-            ->displayIf(static function(Admin $admin): bool {
+            ->displayIf(static function (Admin $admin): bool {
                 return $admin->status !== 'blocked';
             });
 
         $resetPassword = Action::new('resetPassword')
-            ->linkToUrl(function() {
+            ->linkToUrl(function () {
                 $request = $this->requestStack->getCurrentRequest();
 
                 if (!$request instanceof Request) {
